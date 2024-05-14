@@ -1,22 +1,44 @@
-Name: Sneha Sahu
-ROll number: 2022CSB1129
+# Compiler Design for CUCU
 
+## Overview
 
-The program assumes certain conditions:
-1. The modulo operator is not allowed.
-2. Only the `=` and `!=` relational operators are permitted.
-3. Multiple variable declarations on the same line (e.g., `int a, b, c;`) are not supported.
-4. Only the `while` loop is permitted for iterative statements.
-5. The `if` statement must always precede the `else` statement.
+This project consists of a lexer (`cucu.l`) and a parser (`cucu.y`) designed to tokenize and parse sample input files (`sample1.cu` and `sample2.cu`). The lexer tokenizes the input files, while the parser checks the syntactic correctness based on a predefined grammar.
 
-Input is accepted via command line, and the program generates two output files: `Lexer.txt`, which contains tokens extracted from the provided code samples, and `Parser.txt`, which details the structure of the code and any syntax errors encountered.
+## Files
 
-Two sample files are provided: `Sample.cu`, which contains code with correct syntax, and `Sample1.cu`, which contains code with syntax errors.
+- `cucu.l`: Lexer file responsible for tokenizing the input files.
+- `cucu.y`: Parser file containing the grammar rules for parsing the input files.
+- `sample1.cu`: A sample input file with correct syntax.
+- `sample2.cu`: A sample input file with incorrect syntax.
 
+## Usage
 
-#How to run Program?
+1. Compile the lexer and parser files:
+    ```
+    lex cucu.l
+    yacc -d cucu.y -o cucu.tab.c
+    ```
 
-lex cucu.l
-yacc -d cucu.y 
-gcc lex.yy.c y.tab.c -lfl
-./a.out sample.cu
+2. Compile the generated lexer and parser files along with the input files:
+    ```
+    gcc lex.yy.c cucu.tab.c -o parser
+    ```
+
+3. Run the parser with the input file (e.g., `sample1.cu`):
+    ```
+    ./parser sample1.cu
+    ```
+
+## Assumptions
+
+1. Negative numbers are not allowed.
+2. Increment (`a++`) and decrement (`a--`) operators are not allowed.
+3. Only `int` and `char*` datatypes are allowed.
+4. Use of bitwise operators is not allowed.
+5. Only conditional statements followed by curly brackets are allowed.
+6. The parser will stop printing after encountering syntax errors.
+7. The modulo operator is not supported in arithmetic.
+8. Single-line comments (double slash) are not allowed.
+9. Boolean operations in function calls are not allowed.
+
+> **Note:**  There are two sample files named `sample1.cu` and `sample2.cu` provided for testing the parser and lexer. After running, two files named `parser.txt` and `lexer.txt` will be generated.
