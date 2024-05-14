@@ -16,17 +16,18 @@ This project consists of a lexer (`cucu.l`) and a parser (`cucu.y`) designed to 
 1. Compile the lexer and parser files:
     ```
     lex cucu.l
-    yacc -d cucu.y -o cucu.tab.c
+    yacc -d cucu.y 
     ```
 
 2. Compile the generated lexer and parser files along with the input files:
     ```
-    gcc lex.yy.c cucu.tab.c -o parser
+    gcc lex.yy.c y.tab.c -lfl
+
     ```
 
 3. Run the parser with the input file (e.g., `sample1.cu`):
     ```
-    ./parser sample1.cu
+    ./a.out sample1.cu
     ```
 
 ## Assumptions
@@ -41,4 +42,4 @@ This project consists of a lexer (`cucu.l`) and a parser (`cucu.y`) designed to 
 8. Single-line comments (double slash) are not allowed.
 9. Boolean operations in function calls are not allowed.
 
-> **Note:**  There are two sample files named `sample1.cu` and `sample2.cu` provided for testing the parser and lexer. After running, two files named `parser.txt` and `lexer.txt` will be generated.
+> **Note:**  There are two sample files named `sample1.cu` and `sample2.cu` provided for testing the parser and lexer. After running, two files named `Lexer.txt` and `parser.txt` will be generated.
