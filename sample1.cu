@@ -1,4 +1,5 @@
-int main()
+while(a > 2) // while not in a function so synatactically wrong.
 {
-    y=x>2;
+    int a = 2 // no semicolon
+    b =  a + ; expression not correct
 }
